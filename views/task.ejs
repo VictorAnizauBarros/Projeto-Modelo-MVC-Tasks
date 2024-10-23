@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas tarefas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00698f;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #00698f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #005a8c;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-container input{
+            width: 200px;
+            height: 40px;
+            border:none;
+
+        }
+        .search-container input::-webkit-inner-spin-button{
+            display: none;
+        }
+        .search-container input:focus{
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Lista de tarefas</h1>
+
+    <div class="search-container">
+        <form action="/tasks/search" method="GET">
+            <input type="number" name="id" placeholder="Buscar por ID" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    <ul>
+        <% model.forEach(item => { %>
+          <li>
+            <input type="checkbox" <%= item.finalizado ? 'checked' : '' %> >
+             <%= item.descricao %>
+            <button><a href="/update/<%= item.id %>">Editar</a></button>
+            <button><a href="/delete/<%= item.id %>">Deletar</a></button>
+            </li>
+        <% }) %>
+    </ul>
+    <button><a href="/create">Criar Task</a></button>
+</body>
+</html>

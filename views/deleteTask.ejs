@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Tarefa</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
+
+    h1 {
+        text-align: center;
+        color: #00698f;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    form {
+        text-align: center;
+    }
+
+    button[type="submit"] {
+        background-color: #00698f;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #003d5c;
+    }
+
+    button {
+        background-color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button a {
+        text-decoration: none;
+        color: #00698f;
+    }
+
+    button a:hover {
+        color: #003d5c;
+    }
+</style>    
+</head>
+<body>
+    <h1>Deletar Tarefa</h1>
+    
+    <p>Você tem certeza que deseja deletar a tarefa: "<%= task.descricao %>"?</p>
+    
+    <form action="/delete/<%= task.id %>" method="POST">
+        <button type="submit">Deletar</button>
+    </form>
+    
+    <button><a href="/">Cancelar</a></button>
+</body>
+</html>
